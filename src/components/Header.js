@@ -55,7 +55,7 @@ const Header = () => {
               </div>
               <div className='icon'>
                 <span><AiOutlineShoppingCart/></span>
-                <Link to='/user-profile' style={{textDecoration:'none',color:'black'}}><span>Profile</span> </Link>
+                <Link to='/user-profile' style={{textDecoration:'none',color:'black'}}><span>Cart</span> </Link>
               </div>
               
             </div>

@@ -5,7 +5,7 @@ const ProfileScreen = () => {
   const { userInfo } = useSelector((state) => state.auth)
   console.log(userInfo)
   return (
-    <div>
+    <div style={{display:'flex',justifyContent:'center'}}>
       <h1>welcome</h1>
       {/* <figure>{userInfo?.firstName.charAt(0).toUpperCase()}</figure>
       <span>
