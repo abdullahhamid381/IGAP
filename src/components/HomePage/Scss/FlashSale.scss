@@ -1,0 +1,111 @@
+.flash-sale-parent {
+
+   width: 1150px;
+   margin: auto;
+  
+  
+    .sub-flash-grid {
+      display: grid;
+      grid-template-columns: 2fr 8fr;
+      border-radius: 4px;
+      margin: 20px 0;
+      border-bottom: 40px solid rgb(255, 255, 255);
+      box-shadow: 0px 0px 5px 2px #70707024;
+  
+    }
+  
+    .timer-parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  
+    
+      background: #ffffff;
+      padding: 10px 0;
+  
+      span {
+        color: rgb(0, 0, 0);
+        font-size: 20px;
+        font-weight: 400;
+  
+      }
+  
+      .see-all {
+       button{
+        background: #2874F0;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin-top: 15px;
+        font-size: 12px;
+        border: none;
+    
+       }
+      }
+    }
+  
+    .cards-flashsale-parent {
+      background: white;
+      display: grid;
+  
+      .swiper {
+        width: 100%;
+        height: 100%;
+       
+      }
+  
+      .swiper-slide {
+        background: white;
+        font-size: 18px;
+        padding: 10px 20px;
+        margin: 10px 0;
+        transition: .46s;
+        margin-left: auto;
+      margin-right: auto;
+      width: auto;
+  
+  
+  
+        h5 {
+          font-weight: normal;
+          font-size: .875rem;
+          color: black;
+  
+        }
+  
+        span {
+          font-size: 1rem;
+          color: #388E3C;
+          font-weight: normal;
+        }
+        .price{
+          color: #646363;
+          font-weight: lighter;
+  
+        }
+  
+        del {
+          font-size: .875rem;
+  
+        }
+  
+        /* Center slide text vertically */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  
+    .swiper-slide:hover {
+      // box-shadow: 0px 0px 9px 0px #00000063;
+    }
+  }
