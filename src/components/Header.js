@@ -25,20 +25,18 @@ const Header = () => {
 
       <div className='header-parent'>
         <div className='contact-parent'>
-          <div className='contact'>
-            <img src="./images/2.gif" alt="" />
-          </div>
+         
         </div>
         <div className='pay'>
           <img src="./images/3.png" alt="" />
         </div>
         <div className='search-parent'>
-          <div>
+          <div style={{margin:'auto'}}>
             <Link to='/' style={{textDecoration:'none',color:'black'}}>
               <h2>ASE SHOPPING</h2>
             </Link>
           </div>
-          <div className='search-button'>
+          <div className='search-button' style={{margin:'auto'}}>
             <input type="search" placeholder='search here brand, category, products' />
             <button>Search</button>
           </div>
