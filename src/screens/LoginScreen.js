@@ -29,13 +29,13 @@ const LoginScreen = () => {
     <div className="login-parent">
 
       <div className='form-parent'>
-        <div className='star'>
+        {/* <div className='star'>
           <img src="./images/star.png" alt="" />
          
-        </div>
+        </div> */}
         <div>
-        <h1>Welcome to Ase Shopping</h1>
-        <p>Type your e-mail or phone number and password <br /> to log in a Ase account.</p>
+        <h1>Welcome to Login Page</h1>
+        <p>Type your e-mail or phone number and password <br /> .</p>
         </div>
       <center>
       <form onSubmit={handleSubmit(submitForm)}>
@@ -58,13 +58,12 @@ const LoginScreen = () => {
               required
             />
           </div>
+        
           <button type='submit' className='login' disabled={loading}>
             {loading ? <Spinner /> : 'Login'}
           </button>
           <br />
-          <button type='submit' className='facebook' disabled={loading}>
-            {loading ? <Spinner /> : 'Log in with Facebook'}
-          </button>
+       
         </form>
       </center>
       </div>

@@ -42,13 +42,13 @@ const RegisterScreen = () => {
     <div className="login-parent">
 
     <div className='form-parent'>
-      <div className='star'>
+      {/* <div className='star'>
         <img src="./images/star.png" alt="" />
        
-      </div>
+      </div> */}
       <div>
-      <h1>Welcome to Ase Shopping</h1>
-      <p>Type your e-mail or phone number and password <br /> to register in a Ase account.</p>
+      <h1>Welcome to Register Page</h1>
+      <p>Type your e-mail or phone number and password <br /> </p>
       </div>
     <center>
     <form onSubmit={handleSubmit(submitForm)}>
@@ -58,7 +58,7 @@ const RegisterScreen = () => {
         <label htmlFor='firstName'></label>
         <input
           type='text'
-          className='form-input' placeholder='Enter your first name'
+          className='form-input' placeholder='Enter your name'
           {...register('firstName')}
           required
         />
@@ -90,6 +90,57 @@ const RegisterScreen = () => {
           required
         />
       </div>
+      <div className='form-group'>
+        <label htmlFor='number'></label>
+        <input placeholder='Enter your contact number' style={{background:'none'}}
+          type='number'
+          className='form-input'
+          {...register('conatctnumber')}
+          required
+        />
+      </div>
+      <div>
+      <label htmlFor='number'></label>
+        <input placeholder='Enter your company name' style={{background:'none'}}
+          type='text'
+          className='form-input'
+          {...register('companyname')}
+          required
+        />
+      </div>
+      <div>
+      <label htmlFor='number'></label>
+        <input placeholder='Enter your destination' style={{background:'none'}}
+          type='textarea'
+          className='form-input'
+          {...register('destination')}
+          required
+        />
+      </div>
+      <div>
+      <label htmlFor='number'></label>
+        <input placeholder='Enter your interest seprated by coulmn' style={{background:'none'}}
+          type='textarea'
+          className='form-input'
+          {...register('keywords')}
+          required
+        />
+      </div>
+      <div>
+      <label htmlFor='number'></label>
+        <input  style={{background:'none'}}
+          type='file'
+          className='form-input'
+          {...register('photo')}
+          required
+        />
+      </div>
+      <div >
+          <input type="radio" name='fist' value={"value1"} style={{width:'40px'}} 
+       /> Freelancer
+         <input type="radio" name='fist' value={"value1"} style={{width:'40px'}} 
+          /> Buyer
+          </div>
       <button type='submit' className='login' disabled={loading}>
         {loading ? <Spinner /> : 'Register'}
       </button>

@@ -27,18 +27,16 @@ const Header = () => {
         <div className='contact-parent'>
          
         </div>
-        <div className='pay'>
-          <img src="./images/3.png" alt="" />
-        </div>
+      
         <div className='search-parent'>
           <div style={{margin:'auto'}}>
             <Link to='/' style={{textDecoration:'none',color:'black'}}>
-              <h2>ASE SHOPPING</h2>
+              <h2>Freelancer</h2>
             </Link>
           </div>
           <div className='search-button' style={{margin:'auto'}}>
-            <input type="search" placeholder='search here brand, category, products' />
-            <button>Search</button>
+            {/* <input type="search" placeholder='search here brand, category, products' />
+            <button>Search</button> */}
           </div>
           <nav className='container navigation'>
 
@@ -50,6 +48,10 @@ const Header = () => {
               <div className='icon'>
                 <span><GiArchiveRegister /></span>
                 <Link to='/register' style={{textDecoration:'none',color:'black'}}> <span>Register</span> </Link>
+              </div>
+              <div className='icon'>
+                <span><GiArchiveRegister /></span>
+                <Link to='/create' style={{textDecoration:'none',color:'black'}}> <span>Create</span> </Link>
               </div>
               <div className='icon'>
                 <span><AiOutlineShoppingCart/></span>
