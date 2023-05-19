@@ -16,6 +16,7 @@ const RegisterScreen = () => {
 
   const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
+  const [radio,setRadio] = useState(null)
 
   useEffect(() => {
     // redirect authenticated user to profile screen
@@ -31,9 +32,16 @@ const RegisterScreen = () => {
       return
     }
     // transform email string to lowercase to avoid case sensitivity issues in login
+    
     data.email = data.email.toLowerCase()
+    data.interests = data.interests.split(',');
+    data.role = radio;
 
     dispatch(registerUser(data))
+  }
+
+  const handleRadio = (e) => {
+    setRadio(e)
   }
 
   return (
@@ -55,11 +63,11 @@ const RegisterScreen = () => {
       {error && <Error>{error}</Error>}
       {customError && <Error>{customError}</Error>}
       <div className='form-group'>
-        <label htmlFor='firstName'></label>
+        <label htmlFor='name'></label>
         <input
           type='text'
           className='form-input' placeholder='Enter your name'
-          {...register('firstName')}
+          {...register('name')}
           required
         />
       </div>
@@ -91,54 +99,51 @@ const RegisterScreen = () => {
         />
       </div>
       <div className='form-group'>
-        <label htmlFor='number'></label>
-        <input placeholder='Enter your contact number' style={{background:'none'}}
+        <label htmlFor='phoneNo'></label>
+        <input placeholder='Enter your contact Phone Number' style={{background:'none'}}
           type='number'
           className='form-input'
-          {...register('conatctnumber')}
+          {...register('phoneNo')}
           required
         />
       </div>
       <div>
-      <label htmlFor='number'></label>
+      <label htmlFor='companyName'></label>
         <input placeholder='Enter your company name' style={{background:'none'}}
           type='text'
           className='form-input'
-          {...register('companyname')}
-          required
+          {...register('companyName')}
         />
       </div>
       <div>
-      <label htmlFor='number'></label>
-        <input placeholder='Enter your destination' style={{background:'none'}}
+      <label htmlFor='designation'></label>
+        <input placeholder='Enter your designation' style={{background:'none'}}
           type='textarea'
           className='form-input'
-          {...register('destination')}
-          required
+          {...register('designation')}
         />
       </div>
       <div>
-      <label htmlFor='number'></label>
+      <label htmlFor='interests'></label>
         <input placeholder='Enter your interest seprated by coulmn' style={{background:'none'}}
           type='textarea'
           className='form-input'
-          {...register('keywords')}
+          {...register('interests')}
           required
         />
       </div>
       <div>
-      <label htmlFor='number'></label>
+      <label htmlFor='avatar'></label>
         <input  style={{background:'none'}}
           type='file'
           className='form-input'
-          {...register('photo')}
-          required
+          {...register('avatar')}
         />
       </div>
       <div >
-          <input type="radio" name='fist' value={"value1"} style={{width:'40px'}} 
+          <input type="radio" name='role' onChange={(e)=>handleRadio(e.target.value)} value={"Freelancer"} style={{width:'40px'}} 
        /> Freelancer
-         <input type="radio" name='fist' value={"value1"} style={{width:'40px'}} 
+         <input type="radio" name='role'  onChange={(e)=>handleRadio(e.target.value)} value={"Buyer"} style={{width:'40px'}} 
           /> Buyer
           </div>
       <button type='submit' className='login' disabled={loading}>

@@ -1,11 +1,13 @@
-import axios from 'axios'
+// import axios from 'axios'
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import axios from "../../api/axios";
+import { errorHandler } from '../../erroHandler';
 
 const backendURL = 'https://auth.payhero.co.ke/'
 
 export const userLogin = createAsyncThunk(
   'auth/login',
-  async ({ username, password }, { rejectWithValue }) => {
+  async ({ email, password }, { rejectWithValue }) => {
     try {
       // configure header's Content-Type as JSON
       const config = {
@@ -15,29 +17,26 @@ export const userLogin = createAsyncThunk(
       }
 
       const { data } = await axios.post(
-        `${backendURL}auth/login`,
-        { username, password },
+        '/auth/login',
+        { email, password },
         config
       )
 
       // store user's token in local storage
-      localStorage.setItem('userToken', data.userToken)
-
+      localStorage.setItem('accessToken', data.accessToken)
+      localStorage.setItem('refreshToken', data.refreshToken)
+      console.log(data)
       return data
     } catch (error) {
-      // return custom error message from API if any
-      if (error.response && error.response.data.error_message) {
-        return rejectWithValue(error.response.data.error_message)
-      } else {
-        return rejectWithValue(error.message)
-      }
+      let err = errorHandler(error);
+      return rejectWithValue(err);
     }
   }
 )
 
 export const registerUser = createAsyncThunk(
   'user/register',
-  async ({ firstName, email, password }, { rejectWithValue }) => {
+  async ({ name, email, password, interests, role, phoneNo }, { rejectWithValue }) => {
     try {
       const config = {
         headers: {
@@ -45,17 +44,20 @@ export const registerUser = createAsyncThunk(
         },
       }
 
-      await axios.post(
-        `${backendURL}/api/user/register`,
-        { firstName, email, password },
+      const {data} = await axios.post(
+        '/auth/signup',
+        { name, email, password, interests, role, phoneNo },
         config
       )
+      localStorage.setItem('accessToken', data.accessToken)
+      localStorage.setItem('refreshToken', data.refreshToken)
+
+      console.log(data)
+
+
     } catch (error) {
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message)
-      } else {
-        return rejectWithValue(error.message)
-      }
+      let err = errorHandler(error);
+      return rejectWithValue(err);
     }
   }
 )

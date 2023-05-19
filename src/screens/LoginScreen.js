@@ -25,6 +25,8 @@ const LoginScreen = () => {
     dispatch(userLogin(data))
   }
 
+
+
   return (
     <div className="login-parent">
 
@@ -41,11 +43,11 @@ const LoginScreen = () => {
       <form onSubmit={handleSubmit(submitForm)}>
           {error && <Error>{error}</Error>}
           <div className='form-group'>
-            <label htmlFor='username'></label>
+            <label htmlFor='email'></label>
             <input
-              type='text' placeholder='Enter Your Username'
+              type='email' placeholder='Enter Your Email'
               className='form-input'
-              {...register('username')}
+              {...register('email')}
               required
             />
           </div>

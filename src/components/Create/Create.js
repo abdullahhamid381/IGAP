@@ -12,12 +12,12 @@ import Select from '@mui/material/Select';
 import { registerUser } from '../../features/auth/authActions'
 
 import './Create.scss'
+import { createJob } from '../../features/job/jobActions'
 const Create = () => {
-    const [age, setAge] = useState('');
+    const [category , setCategory ] = useState('');
+    const [subCategory, setSubCategory] = useState('');
 
-    const handleChange = (event) => {
-      setAge(event.target.value);
-    };
+
   const [customError, setCustomError] = useState(null)
 
   const { loading, userInfo, error, success } = useSelector(
@@ -36,15 +36,13 @@ const Create = () => {
   }, [navigate, userInfo, success])
 
   const submitForm = (data) => {
-    // check if passwords match
-    if (data.password !== data.confirmPassword) {
-      setCustomError('Password mismatch')
-      return
-    }
-    // transform email string to lowercase to avoid case sensitivity issues in login
-    data.email = data.email.toLowerCase()
+    
+    data.category = category;
+    data.subCategory = subCategory;
 
-    dispatch(registerUser(data))
+    console.log(data);  
+
+    dispatch(createJob(data))
   }
 
   return (
@@ -93,11 +91,11 @@ const Create = () => {
         />
       </div>
       <div>
-      <label htmlFor='numberdays'></label>
+      <label htmlFor='days'></label>
         <input placeholder='Enter your number of days' style={{background:'none'}}
           type='number'
           className='form-input'
-          {...register('numberdays')}
+          {...register('days')}
           required
         />
       </div>
@@ -107,11 +105,11 @@ const Create = () => {
         <input  style={{background:'none'}}
           type='file'
           className='form-input'
-          {...register('photo')}
-          required
+          {...register('file')}
+          multiple
         />
       </div>
-      <div>
+      {/* <div>
       <label htmlFor='number'></label>
         <input  style={{background:'none'}}
           type='file'
@@ -128,39 +126,39 @@ const Create = () => {
           {...register('photo')}
           required
         />
-      </div>
+      </div> */}
       <div>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-helper-label">Category</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
-          value={age}
+          value={category}
           label="Age"
-          onChange={handleChange}
+          onChange={(e)=>setCategory(e.target.value)}
         >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={10}>first</MenuItem>
-          <MenuItem value={20}>second</MenuItem>
-          <MenuItem value={30}>third</MenuItem>
+          <MenuItem value={'first'}>first</MenuItem>
+          <MenuItem value={'second'}>second</MenuItem>
+          <MenuItem value={'third'}>third</MenuItem>
         </Select>
         <FormHelperText></FormHelperText>
       </FormControl>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <Select
-          value={age}
-          onChange={handleChange}
+          value={subCategory}
+          onChange={(e)=>setSubCategory(e.target.value)}
           displayEmpty
           inputProps={{ 'aria-label': 'Without label' }}
         >
           <MenuItem value="">
-            <span>Sub Category</span>
+            <span>Category</span>
           </MenuItem>
-          <MenuItem value={10}>first</MenuItem>
-          <MenuItem value={20}>second</MenuItem>
-          <MenuItem value={30}>third</MenuItem>
+          <MenuItem value={'first'}>first</MenuItem>
+          <MenuItem value={'second'}>second</MenuItem>
+          <MenuItem value={'third'}>third</MenuItem>
         </Select>
         <FormHelperText></FormHelperText>
       </FormControl>

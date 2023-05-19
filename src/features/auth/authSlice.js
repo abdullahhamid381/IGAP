@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { registerUser, userLogin } from './authActions'
 
-// initialize userToken from local storage
-const userToken = localStorage.getItem('userToken')
-  ? localStorage.getItem('userToken')
+// initialize accessToken from local storage
+const accessToken = localStorage.getItem('accessToken')
+  ? localStorage.getItem('accessToken')
   : null
 
 const initialState = {
   loading: false,
   userInfo: null,
-  userToken,
+  accessToken,
   error: null,
   success: false,
 }
@@ -19,10 +19,10 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
-      localStorage.removeItem('userToken') // delete token from storage
+      localStorage.removeItem('accessToken') // delete token from storage
       state.loading = false
       state.userInfo = null
-      state.userToken = null
+      state.accessToken = null
       state.error = null
     },
     setCredentials: (state, { payload }) => {
@@ -38,7 +38,7 @@ const authSlice = createSlice({
     [userLogin.fulfilled]: (state, { payload }) => {
       state.loading = false
       state.userInfo = payload
-      state.userToken = payload.userToken
+      state.accessToken = payload.accessToken
     },
     [userLogin.rejected]: (state, { payload }) => {
       state.loading = false

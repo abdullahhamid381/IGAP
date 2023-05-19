@@ -13,7 +13,8 @@ import ProtectedRoute from './routing/ProtectedRoute'
 import './App.css'
 import Home from './components/Home/Home'
 import Create from './components/Create/Create'
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           </Route>
           <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>
+        <ToastContainer />
       </main>
     </div>
 
