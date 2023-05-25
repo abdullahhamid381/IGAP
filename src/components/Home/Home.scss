@@ -1,0 +1,87 @@
+.my-jobdetail-parent{
+    max-width: 1400px ;
+    width: 100%;
+    margin: auto;
+    margin: 60px auto;
+    display: grid;
+    grid-template-columns: 8fr 2fr;
+    gap: 40px;
+    
+    .Title-my-job{
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 20px;
+        h1{
+            font-size: 38px;
+            color: rgb(98, 100, 106);
+        }
+        p{
+            margin-top: 10px;
+            color: rgb(255, 0, 0);
+        }
+        .cata{
+            display: grid;
+            width: 40%;
+            gap: 40px;
+            grid-template-columns: 1fr 1fr;
+            margin-top: 20px;
+        }
+        .review{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0 0 0;
+            .user-icon{
+                width: 5%;
+                img{
+                    width: 100%;
+                }
+            } 
+        }
+      
+    }
+   
+    .description-section{
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin: 40px 0;
+        padding:20px 20px;
+        .description-title{
+            color: gray;
+        }
+        .description-detail{
+            color: rgb(98, 100, 106);
+            
+            width: 80%;
+            margin: 10px 0;
+        }
+    }
+    .budget-parent{
+        display: grid;
+        grid-template-columns:1fr 1fr ;
+        width: 40%;
+       
+    }
+   .apply{
+padding: 10px 20px;
+border: none;
+font-size: 18px;
+color: white;
+background: green;
+        border-radius: 40px;
+    }
+    
+        .contact{
+            padding: 10px 20px;
+            width: 100%;
+            font-size: 18px;
+            border: none;
+            background-color: none;
+            border-radius: 4px;
+            background: black;
+            color: white;
+            margin: 20px 0;
+
+        }
+    
+}
