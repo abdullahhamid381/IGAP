@@ -29,7 +29,7 @@ function App() {
           <Route path='/register' element={<RegisterScreen />} />
           <Route path='/create' element={<Create />} />
           <Route element={<ProtectedRoute />}>
-            <Route path='/user-profile' element={<ProfileScreen />} />
+          <Route path='/user-profile' element={<ProfileScreen />} />
           </Route>
           <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>
