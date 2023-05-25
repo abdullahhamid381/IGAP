@@ -31,41 +31,10 @@ const Home = () => {
                     </div>
                     <div className='cata'>
                         <div>
-                            <Box sx={{ minWidth: 120 }}>
-                                <FormControl fullWidth>
-                                    <InputLabel id="demo-simple-select-label2">Category</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-label2"
-                                        id="demo-simple-select2"
-                                        value={age}
-                                        label="Age"
-                                        onChange={handleChange}
-                                    >
-                                        <MenuItem >Programming</MenuItem>
-                                        <MenuItem >Graphics Designing</MenuItem>
-                                        <MenuItem >UI Ux</MenuItem>
-                                        <MenuItem >Marketing</MenuItem>
-                                    </Select>
-                                </FormControl>
-                            </Box>
+                          
                         </div>
                         <div>
-                            <Box sx={{ minWidth: 120 }}>
-                                <FormControl fullWidth>
-                                    <InputLabel id="demo-simple-select-label">Sub-Category</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        value={age}
-                                        label="Age"
-                                        onChange={handleChange}
-                                    >
-                                        <MenuItem value={10}>Web developmetn</MenuItem>
-                                        <MenuItem value={20}>Andriod Development</MenuItem>
-                                        <MenuItem value={30}>Game Development</MenuItem>
-                                    </Select>
-                                </FormControl>
-                            </Box>
+                         
                         </div>
                     </div>
                     <div className='review'>
