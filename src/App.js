@@ -16,6 +16,7 @@ import Create from './components/Create/Create'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './components/Footer/Footer'
+import Getjob from './components/Getjob/Getjob'
 
 function App() {
   return (
@@ -24,12 +25,13 @@ function App() {
       <Header />
       <main className='container content'>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Getjob />} />
+          <Route path='/jobdetail/:id' element={<Home/>}/>
           <Route path='/login' element={<LoginScreen />} />
           <Route path='/register' element={<RegisterScreen />} />
-          <Route path='/create' element={<Create />} />
           <Route element={<ProtectedRoute />}>
-          <Route path='/user-profile' element={<ProfileScreen />} />
+            <Route path='/user-profile' element={<ProfileScreen />} />
+            <Route path='/create' element={<Create />} />
           </Route>
           <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>

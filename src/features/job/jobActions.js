@@ -44,7 +44,7 @@ export const getJobs = createAsyncThunk(
       }
 
       const res = await axios.get('/jobs',config)
-      return res.data
+      return res.data.data
 
     }catch(err){
       let error = errorHandler(err);

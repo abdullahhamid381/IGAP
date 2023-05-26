@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import './Scsss/Header.scss'
 import { useGetDetailsQuery } from '../app/services/auth/authService'
 import { logout, setCredentials } from '../features/auth/authSlice'
-import { AiOutlineUser,AiOutlineShoppingCart } from 'react-icons/ai'
+import { AiOutlineUser,AiOutlineShoppingCart, AiOutlineLock } from 'react-icons/ai'
 import { GiArchiveRegister } from 'react-icons/gi'
 
 import { Link } from 'react-router-dom'
@@ -15,6 +15,10 @@ const Header = () => {
   const { data, isFetching } = useGetDetailsQuery('userDetails', {
     pollingInterval: 900000, // 15mins
   })
+
+  const handleLogout = () => {
+    dispatch(logout())
+  }
 
   useEffect(() => {
     if (data) dispatch(setCredentials(data))
@@ -39,7 +43,10 @@ const Header = () => {
             <button>Search</button> */}
           </div>
           <nav className='container navigation'>
-
+            <div className='icon'>
+              <p style={{fontWeight:"bold",color:"green"}}>Role: </p>
+              <p style={{textDecoration:'none',color:'black'}}> <span>{userInfo?.role}</span> </p>
+            </div>
             <div className='login'>
               <div className='icon'>
                 <span><AiOutlineUser /></span>
@@ -54,8 +61,12 @@ const Header = () => {
                 <Link to='/create' style={{textDecoration:'none',color:'black'}}> <span>Create</span> </Link>
               </div>
               <div className='icon'>
-                <span><AiOutlineShoppingCart/></span>
-                <Link to='/user-profile' style={{textDecoration:'none',color:'black'}}><span>Cart</span> </Link>
+                <span><AiOutlineUser/></span>
+                <Link to='/user-profile' style={{textDecoration:'none',color:'black'}}><span>Profile</span> </Link>
+              </div>
+              <div  style={{display:"flex",flexDirection:"row",alignItems:"center", cursor:"pointer", borderWidth:1, borderColor:"green"}} className='icon' onClick={handleLogout}>
+                <AiOutlineLock/>
+                <p style={{color:'black'}}><span>Logout</span> </p>
               </div>
               
             </div>

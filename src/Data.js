@@ -418,3 +418,36 @@ export const productitems = [
 
     },
 ]
+
+export const getjob=[
+    {
+        img:'',
+        tiltle:'',
+        button:'',
+    },
+    {
+        img:'',
+        tiltle:'',
+        button:'',
+    },
+    {
+        img:'',
+        tiltle:'',
+        button:'',
+    },
+    {
+        img:'',
+        tiltle:'',
+        button:'',
+    },
+    {
+        img:'',
+        tiltle:'',
+        button:'',
+    },
+    {
+        img:'',
+        tiltle:'',
+        button:'',
+    },
+]

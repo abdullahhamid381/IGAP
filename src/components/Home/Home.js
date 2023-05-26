@@ -15,11 +15,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { getJobById } from "../../features/job/jobActions";
 import { toast } from "react-toastify";
 import axios from "../../api/axios";
+import { useParams } from "react-router-dom";
 
 const Home = () => {
   const [value, setValue] = React.useState(0);
   const [age, setAge] = React.useState("");
   const [job, setJob] = React.useState({});
+  const { id } = useParams();
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
@@ -27,7 +29,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    dispatch(getJobById("646fbd2093cfb1f7d1ceddbc")).then((res) => {
+    dispatch(getJobById(id)).then((res) => {
       if (res.payload) {
         if (getJobById.fulfilled.match(res)) {
           setJob(res.payload.data);
