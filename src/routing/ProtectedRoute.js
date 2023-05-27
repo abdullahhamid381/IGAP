@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { NavLink, Outlet, Route } from 'react-router-dom'
 import Create from '../components/Create/Create'
-import Home from '../components/Home/Home'
+import Home from '../components/Detailjob/Detailjob'
 
 const ProtectedRoute = () => {
 

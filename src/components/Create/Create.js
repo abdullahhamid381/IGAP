@@ -11,29 +11,37 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { registerUser } from "../../features/auth/authActions";
 import axios from "../../api/axios";
-
 import "./Create.scss";
 import { createJob } from "../../features/job/jobActions";
+import { getCategory } from "../../features/category/categoryActions";
+
+
 const Create = () => {
   const [category, setCategory] = useState("");
   const [subCategory, setSubCategory] = useState("");
-
+  const [subCategories, setSubCategories] = useState([]);
   const [customError, setCustomError] = useState(null);
 
   const { loading, error, jobs } = useSelector(
     (state) => state.jobs
   );
+  const categories = useSelector(state => state.category);
+
   const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   // redirect authenticated user to profile screen
-  //   if (userInfo) navigate("/user-profile");
-  //   // redirect user to login page if registration was successful
-  //   if (success) navigate("/login");
-  // }, [navigate, userInfo, success]);
+  useEffect(() => {
+    dispatch(getCategory({}));
+  }, [dispatch]);
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+    setSubCategory("");
+    setSubCategories(categories.category.find(category => category.name === e.target.value).subCategories);
+  }
+
 
   const submitForm = async (data) => {
     //checking if some files were selcted or not if yes then upload them then get the data and set it with data for job creation
@@ -166,14 +174,15 @@ const Create = () => {
                   id="demo-simple-select-helper"
                   value={category}
                   label="Age"
-                  onChange={(e) => setCategory(e.target.value)}
+                  onChange={handleCategoryChange}
+                  placeholder="Category"
                 >
-                  <MenuItem value="">
+                  {/* <MenuItem value="">
                     <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={"first"}>first</MenuItem>
-                  <MenuItem value={"second"}>second</MenuItem>
-                  <MenuItem value={"third"}>third</MenuItem>
+                  </MenuItem> */}
+                  {categories.category.map((category) => 
+                    <MenuItem value={category.name}>{category.name}</MenuItem>
+                  )}
                 </Select>
                 <FormHelperText></FormHelperText>
               </FormControl>
@@ -181,15 +190,14 @@ const Create = () => {
                 <Select
                   value={subCategory}
                   onChange={(e) => setSubCategory(e.target.value)}
-                  displayEmpty
+                  placeholder="Sub Category"
                   inputProps={{ "aria-label": "Without label" }}
                 >
-                  <MenuItem value="">
-                    <span>Category</span>
-                  </MenuItem>
-                  <MenuItem value={"first"}>first</MenuItem>
-                  <MenuItem value={"second"}>second</MenuItem>
-                  <MenuItem value={"third"}>third</MenuItem>
+                 {
+                    subCategories.map((category) =>
+                    <MenuItem value={category}>{category}</MenuItem>
+                    )
+                 } 
                 </Select>
                 <FormHelperText></FormHelperText>
               </FormControl>

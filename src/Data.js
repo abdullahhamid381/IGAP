@@ -1,5 +1,7 @@
 import { CiApple } from 'react-icons/ci'
-
+import blog1 from './assets/blog-1.jpg'
+import blog2 from './assets/blog-2.jpg'
+import blog3 from './assets/blog-3.jpg'
 export const Menu = [
     {
 
@@ -421,33 +423,19 @@ export const productitems = [
 
 export const getjob=[
     {
-        img:'',
+        img:blog1,
         tiltle:'',
         button:'',
     },
     {
-        img:'',
+        img:blog2,
         tiltle:'',
         button:'',
     },
     {
-        img:'',
+        img:blog3,
         tiltle:'',
         button:'',
     },
-    {
-        img:'',
-        tiltle:'',
-        button:'',
-    },
-    {
-        img:'',
-        tiltle:'',
-        button:'',
-    },
-    {
-        img:'',
-        tiltle:'',
-        button:'',
-    },
+    
 ]

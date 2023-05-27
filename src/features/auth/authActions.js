@@ -24,7 +24,8 @@ export const userLogin = createAsyncThunk(
       // store user's token in local storage
       localStorage.setItem('accessToken', data.accessToken)
       localStorage.setItem('refreshToken', data.refreshToken)
-      console.log(data)
+      localStorage.setItem('user', JSON.stringify(data.user))
+
       return data
     } catch (error) {
       let err = errorHandler(error);
@@ -50,6 +51,7 @@ export const registerUser = createAsyncThunk(
       )
       localStorage.setItem('accessToken', data.accessToken)
       localStorage.setItem('refreshToken', data.refreshToken)
+      localStorage.setItem('user', JSON.stringify(data.user))
 
       return data
 
@@ -71,7 +73,7 @@ export const getUserProfile = createAsyncThunk(
       },
     });
     
-    console.log(res.data.data);
+    localStorage.setItem('user', JSON.stringify(res.data.data));
     return res.data.data;
 
   }catch(error){

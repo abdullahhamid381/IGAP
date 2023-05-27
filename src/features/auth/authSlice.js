@@ -22,6 +22,7 @@ const authSlice = createSlice({
       console.log('logout')
       localStorage.removeItem('accessToken') // delete token from storage
       localStorage.removeItem('refreshToken') // delete refreshToken from storage
+      localStorage.removeItem('user') // delete userInfo from storage
       state.loading = false
       state.userInfo = null
       state.accessToken = null
@@ -43,6 +44,8 @@ const authSlice = createSlice({
       state.loading = false
       state.userInfo = payload.user
       state.accessToken = payload.accessToken
+      state.success = true // login successful
+
     },
     [userLogin.rejected]: (state, { payload }) => {
       state.loading = false
@@ -63,18 +66,18 @@ const authSlice = createSlice({
       state.loading = false
       state.error = payload
     },
-    // [getUserProfile.pending]: (state) => {
-    //   state.loading = true
-    //   state.error = null
-    // },
-    // [getUserProfile.fulfilled]: (state, { payload }) => {
-    //   state.loading = false
-    //   state.userInfo = payload
-    // },
-    // [getUserProfile.rejected]: (state, { payload }) => {
-    //   state.loading = false
-    //   state.error = payload
-    // },
+    [getUserProfile.pending]: (state) => {
+      state.loading = true
+      state.error = null
+    },
+    [getUserProfile.fulfilled]: (state, { payload }) => {
+      state.loading = false
+      state.userInfo = payload
+    },
+    [getUserProfile.rejected]: (state, { payload }) => {
+      state.loading = false
+      state.error = payload
+    },
   },
 })
 

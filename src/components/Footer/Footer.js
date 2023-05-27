@@ -63,7 +63,7 @@ const Footer = () => {
 
       </footer>
       <div>
-        <center><h4 style={{ color: 'white', background: 'green', padding: '10px  0 10px 0', margin: '0', fontWeight: 'lighter', fontSize: '13px' }}>Copyright All Rights Reserved Lip Gloss</h4></center>
+        <center><h4 style={{ color: 'white', background: '#F38247', padding: '10px  0 10px 0', margin: '0', fontWeight: 'lighter', fontSize: '13px' }}>Copyright All Rights Reserved Lip Gloss</h4></center>
       </div>
     </Fragment>
   )

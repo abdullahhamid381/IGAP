@@ -23,7 +23,7 @@ export const createJob = createAsyncThunk(
         config
       )
       toast.success('Job created successfully')
-      return data
+      return data.data
     } catch (error) {
       let err = errorHandler(error);
       return rejectWithValue(err);
@@ -72,6 +72,30 @@ export const getJobById = createAsyncThunk(
       return rejectWithValue(error)
     }
   })
+
+  export const getBidsonAJob = createAsyncThunk(
+    "bid/getBidsonAJob",
+    async ({ jobId }, { rejectWithValue }) => {
+      try {
+  
+          let config = {
+              headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": "Bearer " + localStorage.getItem("accessToken")
+              }
+          };
+  
+          const res = await axios.get(`/bids/job/${jobId}`, config);
+  
+          return res.data.data;
+  
+  
+      } catch (err) {
+        let error = errorHandler(err);
+        return rejectWithValue(error);
+      }
+    }
+  );
 
     
 

@@ -1,5 +1,6 @@
 const urls = {
-  baseUrl: "http://localhost:5000",
+  // baseUrl: "http://localhost:5000",
+  baseUrl: "https://igap.vercel.app",
   auth: {
     login: "/auth/login",
     signup: "/auth/signup",

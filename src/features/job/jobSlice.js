@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { createJob, getJobById, getJobs } from './jobActions'
+import { createJob, getBidsonAJob, getJobById, getJobs } from './jobActions'
 
 const initialState = {
     loading: false,
     jobs: [],
+    bids:[],
     error: null,
     success: false,
 }
@@ -32,7 +33,6 @@ const jobSlice = createSlice({
     },
     [getJobs.fulfilled]: (state, { payload }) => {
       state.loading = false
-      console.log("PAYLOAD: ",payload)
       state.jobs = [...state.jobs,...payload]
     },
     [getJobs.rejected]: (state, { payload }) => {
@@ -48,6 +48,18 @@ const jobSlice = createSlice({
       //not sure if this is the best way to do this but i am not sure how to update the state in regrads to the id
     },
     [getJobById.rejected]: (state, { payload }) => {
+      state.loading = false
+      state.error = payload
+    },
+    [getBidsonAJob.pending]: (state) => {
+      state.loading = true
+      state.error = null
+    },
+    [getBidsonAJob.fulfilled]: (state, { payload }) => {
+      state.loading = false
+      //not sure if this is the best way to do this but i am not sure how to update the state in regrads to the id
+    },
+    [getBidsonAJob.rejected]: (state, { payload }) => {
       state.loading = false
       state.error = payload
     },
