@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import Error from '../components/Error'
 import Spinner from '../components/Spinner'
 import { registerUser } from '../features/auth/authActions'
+import axios from "../api/axios"
 import './Login.scss'
 const RegisterScreen = () => {
   const [customError, setCustomError] = useState(null)
@@ -25,14 +26,30 @@ const RegisterScreen = () => {
     if (success) navigate('/login')
   }, [navigate, userInfo, success])
 
-  const submitForm = (data) => {
+  const submitForm = async (data) => {
     // check if passwords match
     if (data.password !== data.confirmPassword) {
       setCustomError('Password mismatch')
       return
     }
     // transform email string to lowercase to avoid case sensitivity issues in login
-    
+
+    if(data.avatar[0]){
+      let formData = new FormData();
+      formData.append('files', data.avatar);
+      const res = await axios.post(`${axios.defaults.baseURL}/upload/uploadFile`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      if(res){
+        data.avatar = res.data[0].filename
+      }
+      else{
+        data.avatar = null;
+      }
+    }
+
     data.email = data.email.toLowerCase()
     data.interests = data.interests.split(',');
     data.role = radio;
@@ -133,7 +150,7 @@ const RegisterScreen = () => {
         />
       </div>
       <div>
-      <label htmlFor='avatar'></label>
+      <label htmlFor='avatar'>Avatar: </label>
         <input  style={{background:'none'}}
           type='file'
           className='form-input'

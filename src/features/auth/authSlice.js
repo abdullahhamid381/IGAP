@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { registerUser, userLogin } from './authActions'
+import { getUserProfile, registerUser, userLogin } from './authActions'
 
 // initialize accessToken from local storage
 const accessToken = localStorage.getItem('accessToken')
@@ -19,14 +19,18 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
+      console.log('logout')
       localStorage.removeItem('accessToken') // delete token from storage
+      localStorage.removeItem('refreshToken') // delete refreshToken from storage
       state.loading = false
       state.userInfo = null
       state.accessToken = null
       state.error = null
+      window.location.href = '/' // redirect to Home page
     },
     setCredentials: (state, { payload }) => {
-      state.userInfo = payload
+      console.log('setCredentials')
+      state.userInfo = payload.data
     },
   },
   extraReducers: {
@@ -37,7 +41,7 @@ const authSlice = createSlice({
     },
     [userLogin.fulfilled]: (state, { payload }) => {
       state.loading = false
-      state.userInfo = payload
+      state.userInfo = payload.user
       state.accessToken = payload.accessToken
     },
     [userLogin.rejected]: (state, { payload }) => {
@@ -51,12 +55,26 @@ const authSlice = createSlice({
     },
     [registerUser.fulfilled]: (state, { payload }) => {
       state.loading = false
+      state.userInfo = payload.user
+      state.accessToken = payload.accessToken
       state.success = true // registration successful
     },
     [registerUser.rejected]: (state, { payload }) => {
       state.loading = false
       state.error = payload
     },
+    // [getUserProfile.pending]: (state) => {
+    //   state.loading = true
+    //   state.error = null
+    // },
+    // [getUserProfile.fulfilled]: (state, { payload }) => {
+    //   state.loading = false
+    //   state.userInfo = payload
+    // },
+    // [getUserProfile.rejected]: (state, { payload }) => {
+    //   state.loading = false
+    //   state.error = payload
+    // },
   },
 })
 

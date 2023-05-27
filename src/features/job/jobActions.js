@@ -2,11 +2,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from "../../api/axios";
 import { errorHandler } from '../../erroHandler';
+import { toast } from 'react-toastify';
 
 
 export const createJob = createAsyncThunk(
   'job/create',
-  async ({title,description,budget,category,subCategory,days}, { rejectWithValue }) => {
+  async ({title,files,description,requestedDays,category,subCategory,requestedBudget}, { rejectWithValue }) => {
     try {
       // configure header's Content-Type as JSON
       const config = {
@@ -18,11 +19,10 @@ export const createJob = createAsyncThunk(
 
       const { data } = await axios.post(
         '/jobs',
-        {title,description,budget,category,subCategory,days},
+        {title,description,files,requestedDays,category,subCategory,requestedBudget},
         config
       )
-
-        console.log(data)
+      toast.success('Job created successfully')
       return data
     } catch (error) {
       let err = errorHandler(error);
@@ -30,4 +30,49 @@ export const createJob = createAsyncThunk(
     }
   }
 )
+
+export const getJobs = createAsyncThunk(
+  'job/getJobs',
+  async (_, { rejectWithValue }) => {
+    try{
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        },
+      }
+
+      const res = await axios.get('/jobs',config)
+      return res.data.data
+
+    }catch(err){
+      let error = errorHandler(err);
+      return rejectWithValue(error)
+    }
+
+  })
+
+export const getJobById = createAsyncThunk(
+  'job/getJobById',
+  async (id, { rejectWithValue }) => {
+    try{
+
+      let config = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        },
+      }
+      const res = await axios.get(`/jobs/job/${id}`,config)
+      return res.data
+
+    }catch(err){
+      let error = errorHandler(err);
+      return rejectWithValue(error)
+    }
+  })
+
+    
+
 

@@ -28,13 +28,12 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={<Homescreen />} />
-          <Route path='/getjob' element={<Getjob />} />
+          <Route path='/jobdetail/:id' element={<Home/>}/>
           <Route path='/login' element={<LoginScreen />} />
           <Route path='/register' element={<RegisterScreen />} />
-          <Route path='/create' element={<Create />} />
           <Route element={<ProtectedRoute />}>
-            <Route path='/jobdetail' element={<Home/>}/>
             <Route path='/user-profile' element={<ProfileScreen />} />
+            <Route path='/create' element={<Create />} />
           </Route>
           <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>

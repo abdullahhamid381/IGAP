@@ -3,13 +3,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://auth.payhero.co.ke/',
+    baseUrl: 'http://localhost:5000/',
 
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.token
+      const token = getState().auth.accessToken
       if (token) {
         headers.set('authorization', `Bearer ${token}`)
-
         return headers
       }
     },
@@ -17,7 +16,7 @@ export const authApi = createApi({
   endpoints: (build) => ({
     getDetails: build.query({
       query: () => ({
-        url: 'auth/users/4',
+        url: 'user/profile',
         method: 'GET',
       }),
     }),

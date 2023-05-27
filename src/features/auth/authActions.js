@@ -3,7 +3,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from "../../api/axios";
 import { errorHandler } from '../../erroHandler';
 
-const backendURL = 'https://auth.payhero.co.ke/'
 
 export const userLogin = createAsyncThunk(
   'auth/login',
@@ -52,8 +51,7 @@ export const registerUser = createAsyncThunk(
       localStorage.setItem('accessToken', data.accessToken)
       localStorage.setItem('refreshToken', data.refreshToken)
 
-      console.log(data)
-
+      return data
 
     } catch (error) {
       let err = errorHandler(error);
@@ -61,3 +59,23 @@ export const registerUser = createAsyncThunk(
     }
   }
 )
+
+export const getUserProfile = createAsyncThunk(
+  'user/profile',
+  async (_, { rejectWithValue }) => {
+  try{
+
+    const res = await axios.get('/user/profile',{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+    });
+    
+    console.log(res.data.data);
+    return res.data.data;
+
+  }catch(error){
+    let err = errorHandler(error);
+    return rejectWithValue(err);
+  }
+  })
