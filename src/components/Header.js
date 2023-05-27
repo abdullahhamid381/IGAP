@@ -30,31 +30,41 @@ const Header = () => {
       
         <div className='search-parent'>
           <div style={{margin:'auto'}}>
-            <Link to='/' style={{textDecoration:'none',color:'black'}}>
-              <h2>Freelancer</h2>
+            <Link to='/' style={{textDecoration:'none',color:'#FF5B37'}}>
+              <h2 style={{marginLeft:'-150px',marginTop:'10px'}}>IGAP</h2>
             </Link>
           </div>
-          <div className='search-button' style={{margin:'auto'}}>
-            {/* <input type="search" placeholder='search here brand, category, products' />
-            <button>Search</button> */}
+          <div className='pages-section'>
+         <li>
+          <Link to='' className='link-page'>Home</Link>
+         </li>
+         <li>
+          <Link to='' className='link-page'>Getjob</Link>
+         </li>
+         <li>
+          <Link to='' className='link-page'>About us</Link>
+         </li>
+         <li>
+          <Link to='' className='link-page'>Contact us</Link>
+         </li>
           </div>
           <nav className='container navigation'>
 
             <div className='login'>
               <div className='icon'>
-                <span><AiOutlineUser /></span>
+                <span><AiOutlineUser  style={{color:'#FF5B37'}} /></span>
                 <Link to='/login' style={{textDecoration:'none',color:'black'}}> <span>Login</span></Link>
               </div>
               <div className='icon'>
-                <span><GiArchiveRegister /></span>
+                <span><GiArchiveRegister style={{color:'#FF5B37'}}/></span>
                 <Link to='/register' style={{textDecoration:'none',color:'black'}}> <span>Register</span> </Link>
               </div>
               <div className='icon'>
-                <span><GiArchiveRegister /></span>
+                <span><GiArchiveRegister  style={{color:'#FF5B37'}}/></span>
                 <Link to='/create' style={{textDecoration:'none',color:'black'}}> <span>Create</span> </Link>
               </div>
               <div className='icon'>
-                <span><AiOutlineShoppingCart/></span>
+                <span><AiOutlineShoppingCart  style={{color:'#FF5B37'}}/></span>
                 <Link to='/user-profile' style={{textDecoration:'none',color:'black'}}><span>Cart</span> </Link>
               </div>
               

@@ -17,15 +17,18 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './components/Footer/Footer'
 import Getjob from './components/Getjob/Getjob'
+import Homepage from './components/Homepage/Homepage'
+import Homescreen from './components/Homepage/Homescreen'
 
 function App() {
   return (
 
     <div>
       <Header />
-      <main className='container content'>
+      <main>
         <Routes>
-          <Route path='/' element={<Getjob />} />
+          <Route path='/' element={<Homescreen />} />
+          <Route path='/getjob' element={<Getjob />} />
           <Route path='/login' element={<LoginScreen />} />
           <Route path='/register' element={<RegisterScreen />} />
           <Route path='/create' element={<Create />} />
