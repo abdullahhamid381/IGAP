@@ -43,7 +43,7 @@ const Header = () => {
           <Link to='' className='link-page'>Home</Link>
          </li>
          <li>
-          <Link to='' className='link-page'>Getjob</Link>
+          <Link to='/job' className='link-page'>Getjob</Link>
          </li>
          <li>
           <Link to='' className='link-page'>About us</Link>
@@ -53,11 +53,9 @@ const Header = () => {
          </li>
           </div>
           <nav className='container navigation'>
-            <div className='icon'>
-              <p style={{fontWeight:"bold",color:"green"}}>Role: </p>
-              <p style={{textDecoration:'none',color:'black'}}> <span>{userInfo?.role}</span> </p>
-            </div>
+         
             <div className='login'>
+           
               <div className='icon'>
                 <span><AiOutlineUser  style={{color:'#FF5B37'}} /></span>
                 <Link to='/login' style={{textDecoration:'none',color:'black'}}> <span>Login</span></Link>
@@ -75,10 +73,13 @@ const Header = () => {
                 <Link to='/user-profile' style={{textDecoration:'none',color:'black'}}><span>Profile</span> </Link>
               </div>
               <div  style={{display:"flex",flexDirection:"row",alignItems:"center", cursor:"pointer", borderWidth:1, borderColor:"green"}} className='icon' onClick={handleLogout}>
-                <AiOutlineLock/>
-                <p style={{color:'black'}}><span>Logout</span> </p>
+                <span><AiOutlineLock/></span>
+                <span style={{color:'black'}}><span>Logout</span> </span>
               </div>
-              
+              <div className='icon'>
+              <span style={{}}>Role: </span>
+              <span style={{textDecoration:'none',color:'black'}}> <span>{userInfo?.role}</span> </span>
+            </div>
             </div>
           </nav>
         </div>

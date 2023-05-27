@@ -8,10 +8,10 @@ import Header from './components/Header'
 import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import ProfileScreen from './screens/ProfileScreen'
-
+import Detailjob from './components/Detailjob/Detailjob'
 import ProtectedRoute from './routing/ProtectedRoute'
 import './App.css'
-import Home from './components/Home/Home'
+import Home from './components/Detailjob/Detailjob'
 import Create from './components/Create/Create'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -28,7 +28,8 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={<Homescreen />} />
-          <Route path='/jobdetail/:id' element={<Home/>}/>
+          <Route path='/jobdetail' element={<Detailjob />} />
+          <Route path='/job' element={<Getjob/>}/>
           <Route path='/login' element={<LoginScreen />} />
           <Route path='/register' element={<RegisterScreen />} />
           <Route element={<ProtectedRoute />}>
@@ -37,6 +38,7 @@ function App() {
           </Route>
           <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>
+        {/* <Detailjob/> */}
         <ToastContainer />
       </main>
       <Footer/>

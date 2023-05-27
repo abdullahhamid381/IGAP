@@ -150,7 +150,7 @@ const RegisterScreen = () => {
         />
       </div>
       <div>
-      <label htmlFor='avatar'>Avatar: </label>
+      <label htmlFor='avatar'>Avatar: </label> <br />
         <input  style={{background:'none'}}
           type='file'
           className='form-input'
